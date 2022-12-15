@@ -7,12 +7,12 @@ resource "aws_elasticache_cluster" "redis" {
   parameter_group_name = ????
   engine_version       = "6.2"
   port                 = 6379
-  subnet_group_name    = 
-  security_group_ids   = 
+  subnet_group_name    = aws_elasticache_subnet_group.subnet-group.name
+  security_group_ids   = [aws_elasticache_parameter_group.pg.id]
 }
 
 # Creates Parameter Group from Elastic Cache Cluster
-resource "aws_elasticache_parameter_group" "default" {
+resource "aws_elasticache_parameter_group" "pg" {
   name   = "roboshop-parameter-grp-${var.ENV}"
   family = "redis6.2"
 }
