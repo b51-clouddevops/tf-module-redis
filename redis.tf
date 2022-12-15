@@ -18,5 +18,9 @@ resource "aws_elasticache_parameter_group" "default" {
 # Creates Subnet Group
 resource "aws_elasticache_subnet_group" "subnet-group" {
   name       = "roboshop-subnet-grp-${var.ENV}"
-  subnet_ids = 
+  subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_ID
+
+  tags = {
+    Name = "robot-docdb-${var.ENV}"
+  }
 }
