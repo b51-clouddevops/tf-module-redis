@@ -7,6 +7,8 @@ resource "aws_elasticache_cluster" "redis" {
   parameter_group_name = ????
   engine_version       = "6.2"
   port                 = 6379
+  subnet_group_name    = 
+  security_group_ids   = 
 }
 
 # Creates Parameter Group from Elastic Cache Cluster
