@@ -10,3 +10,7 @@ resource "aws_elasticache_cluster" "redis" {
 }
 
 # Creates Parameter Group from Elastic Cache Cluster
+resource "aws_elasticache_parameter_group" "default" {
+  name   = "roboshop-parameter-grp-${var.ENV}"
+  family = "redis6.2"
+}
