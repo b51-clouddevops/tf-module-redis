@@ -1,8 +1,10 @@
 # Creates Security Group
 resource "aws_security_group" "allows_redis" {
   name        = "roboshop-${var.ENV}-redis"
-  description = "roboshop-${var.ENV}-redis"
-  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
+  description        = "roboshop-${var.ENV}-redis"
+  vpc_id             = data.terraform_remote_state.vpc.outputs.VPC_ID
+  subnet_group_name  = 
+  security_group_ids = 
 
   ingress {
     description      = "Allow redis from default VPC"
