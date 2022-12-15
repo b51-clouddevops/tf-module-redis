@@ -14,3 +14,9 @@ resource "aws_elasticache_parameter_group" "default" {
   name   = "roboshop-parameter-grp-${var.ENV}"
   family = "redis6.2"
 }
+
+# Creates Subnet Group
+resource "aws_elasticache_subnet_group" "subnet-group" {
+  name       = "roboshop-subnet-grp-${var.ENV}"
+  subnet_ids = [aws_subnet.foo.id]
+}
