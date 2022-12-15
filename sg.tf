@@ -1,19 +1,19 @@
 # Creates Security Group
-resource "aws_security_group" "allows_docdb" {
-  name        = "roboshop-${var.ENV}-docdb"
-  description = "roboshop-${var.ENV}-docdb"
+resource "aws_security_group" "allows_redis" {
+  name        = "roboshop-${var.ENV}-redis"
+  description = "roboshop-${var.ENV}-redis"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
-    description      = "Allow DocDB from default VPC"
-    from_port        = 27017
-    to_port          = 27017
+    description      = "Allow redis from default VPC"
+    from_port        = 6379
+    to_port          = 6379
     protocol         = "tcp"
     cidr_blocks      = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
   }
 
   ingress {
-    description      = "Allow DocDB from default VPC"
+    description      = "Allow redis from default VPC"
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
@@ -29,6 +29,6 @@ resource "aws_security_group" "allows_docdb" {
   }
 
   tags = {
-    Name = "roboshop-${var.ENV}-docdb"
+    Name = "roboshop-${var.ENV}-redis"
   }
 }
