@@ -5,3 +5,7 @@
 #   ttl     = 10
 #   records = [aws_elasticache_cluster.redis.address]
 # }
+
+output "redis" {
+    value = aws_elasticache_cluster.redis
+}
