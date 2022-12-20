@@ -5,7 +5,7 @@ resource "aws_elasticache_cluster" "redis" {
   node_type            = var.DOCDB_PORT_INSTANCE_CLASS
   num_cache_nodes      = 1
   parameter_group_name = aws_elasticache_parameter_group.pg.name
-  engine_version       = "6.x"
+  engine_version       = var.DOCDB_ENGINE_VERSION
   port                 = var.REDIS_PORT
   subnet_group_name    = aws_elasticache_subnet_group.subnet-group.name
   security_group_ids   = [aws_security_group.allows_redis.id]
