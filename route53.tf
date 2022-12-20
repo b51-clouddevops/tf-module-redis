@@ -1,7 +1,7 @@
 resource "aws_route53_record" "redis-r53" {
   zone_id = data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONEID
-  name    = "mysql-${var.ENV}.${data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONENAME}"
+  name    = "redis-${var.ENV}.${data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONENAME}"
   type    = "CNAME"
   ttl     = 10
-  records = [aws_db_instance.mysql.address]
+  records = [aws_elasticache_cluster.redis.address]
 }
