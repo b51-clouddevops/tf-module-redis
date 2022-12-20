@@ -2,7 +2,7 @@
 resource "aws_elasticache_cluster" "redis" {
   cluster_id           = "roboshop-redis-${var.ENV}"
   engine               = "redis"
-  node_type            = "cache.t3.micro"
+  node_type            = var.DOCDB_PORT_INSTANCE_CLASS
   num_cache_nodes      = 1
   parameter_group_name = aws_elasticache_parameter_group.pg.name
   engine_version       = "6.x"
