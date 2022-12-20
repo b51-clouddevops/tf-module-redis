@@ -3,7 +3,7 @@ resource "aws_elasticache_cluster" "redis" {
   cluster_id           = "roboshop-redis-${var.ENV}"
   engine               = "redis"
   node_type            = var.DOCDB_PORT_INSTANCE_CLASS
-  num_cache_nodes      = 1
+  num_cache_nodes      = var.REDIS_NODE_COUNT
   parameter_group_name = aws_elasticache_parameter_group.pg.name
   engine_version       = var.DOCDB_ENGINE_VERSION
   port                 = var.REDIS_PORT
